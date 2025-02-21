@@ -1,0 +1,24 @@
+.sideBar {
+    font-family: 'Poppins', sans-serif;
+    width: 13%; 
+    height: 140vh;
+    border-right: 1px solid rgb(78, 74, 74);
+    background-color: #1f1f1f;
+    color: white;
+
+}
+  .sideContent {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: .2rem;
+    gap: 2px;
+    padding: 15px;
+    text-align: center;
+  }
+  
+ul {
+    margin-top: 10px;
+    list-style: none;
+}

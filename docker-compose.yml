@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./back-end
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    networks:
+      - coderunner
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/coderunner
+      - PORT=5000
+
+  frontend:
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile
+      args:
+      - VITE_API_URL=http://backend:5000
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    networks:
+      - coderunner
+    volumes:
+      - ./front-end/src:/src
+      - ./front-end/node_modules:/src/node_modules
+    environment:
+      - NODE_ENV=production
+      - VITE_API_URL=http://backend:5000
+
+  mongo:
+    image: mongo:latest
+    command: mongod --bind_ip 0.0.0.0  # This is the key change
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - coderunner
+
+volumes:
+  mongo-data:
+
+networks:
+  coderunner:
+    driver: bridge

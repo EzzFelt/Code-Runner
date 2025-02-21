@@ -1,0 +1,86 @@
+/* Fundo escuro para todo o body */
+body {
+    color: white; /* Cor do texto em branco */
+    font-family: Arial, sans-serif; /* Fonte padrão */
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Garante que o body ocupe toda a altura da tela */
+  }
+  
+  /* Garantir que o container principal tenha o fundo certo */
+  .lesson-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  /* Informações da lição com fundo escuro */
+  .lesson-info {
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    width: 100%;
+    color: white; /* Cor da letra branca */
+  }
+  
+  /* Objetivo e dicas */
+  .lesson-objective,
+  .lesson-tips {
+    margin-bottom: 15px;
+  }
+  
+  /* Linha de separação */
+  .lesson-divider {
+    height: 1px;
+    background-color: #444; /* Cor de separação suave */
+    margin: 20px 0;
+  }
+  
+  /* Lista de dicas */
+  .lesson-tips ul {
+    padding-left: 20px;
+  }
+  
+  .lesson-tips li {
+    margin-bottom: 10px;
+  }
+  
+  .lesson-info h2 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .lesson-info p,
+  .lesson-info ul {
+    font-size: 1rem;
+  }
+  
+  /* Estilos para o CodeMirror */
+  .lesson-container .CodeMirror {
+    width: 100%;
+    height: 300px; /* Ajuste a altura conforme necessário */
+    background-color: #2d2d2d; /* Cor de fundo escuro para o editor */
+    color: white; /* Texto branco dentro do editor */
+  }
+  
+  /* Destaque para o CodeMirror quando focado */
+  .CodeMirror-focused {
+    border: 2px solid #5e9fff; /* Cor de destaque para o foco no editor */
+  }
+  
+  /* Ajustes responsivos */
+  @media (max-width: 768px) {
+    .lesson-info {
+      padding: 15px;
+    }
+    .lesson-container .CodeMirror {
+      height: 250px;
+    }
+  }
+  

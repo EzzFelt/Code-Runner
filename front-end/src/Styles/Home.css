@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #181818;
+    color: #fff;
+  }
+  
+  .home-container {
+    text-align: center;
+  }
+  
+  .navbar {
+    width: 100%;
+    background-color: #121212;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+  }
+  
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0 15px;
+  }
+  
+  .profile-container {
+    margin: 30px 0;
+  }
+  
+  .profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #555;
+    margin: 0 auto 10px;
+  }
+  
+  .welcome-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .lessons-completed {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .weekly-challenges {
+    margin-top: 30px;
+  }
+  
+  .weekly-challenges h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+  
+  .challenges {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .challenge-card {
+    background-color: #222;
+    padding: 15px 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 100px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+  }
+  
+  .challenge-card:hover {
+    transform: scale(1.1);
+    background-color: #333;
+  }
+  
+  .challenge-card i {
+    font-size: 20px;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .challenge-card span {
+    font-size: 16px;
+  }
+  

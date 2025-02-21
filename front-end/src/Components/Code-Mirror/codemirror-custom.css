@@ -1,0 +1,81 @@
+/* Estilização da área do editor */
+.CodeMirror {
+    font-family: "Fira Code", monospace;
+    font-size: 14px;
+    background-color: #1e1e1e; /* Cor de fundo escura */
+    color: #ffffff; /* Cor do texto */
+    border: 1px solid #444; 
+    border-radius: 4px;
+    padding: 10px;
+    width: 1000px; /* Ou um valor fixo como 600px */
+    min-height: 300px; /* Ajuste a altura se necessário */
+  }
+  
+  /* Alterando a cor da numeração da linha */
+  .CodeMirror-gutters {
+    background-color: #2a2a2a;
+    border-right: 1px solid #444;
+  }
+  
+  .CodeMirror-linenumber {
+    color: #bbbbbb;
+  }
+  
+  /* Cursor de texto */
+  .CodeMirror-cursor {
+    border-left: 2px solid #ffcc00 !important;
+  }
+  
+  /* Texto selecionado */
+  .CodeMirror-selected {
+    background: #444 !important;
+  }
+  
+  /* Highlight da linha atual */
+  .CodeMirror-activeline-background {
+    background: #333 !important;
+  }
+  
+  /* Scrollbars customizados */
+  .CodeMirror-scrollbar-filler,
+  .CodeMirror-gutter-filler {
+    background: #1e1e1e;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #2a2a2a;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #777;
+  }
+  
+  /* Cores de sintaxe */
+  .cm-keyword { color: #c678dd; }
+  .cm-atom { color: #d19a66; }
+  .cm-number { color: #d19a66; }
+  .cm-def { color: #56b6c2; }
+  .cm-variable { color: #e06c75; }
+  .cm-variable-2 { color: #e5c07b; }
+  .cm-variable-3 { color: #61afef; }
+  .cm-property { color: #abb2bf; }
+  .cm-operator { color: #56b6c2; }
+  .cm-comment { color: #7d8799; font-style: italic; }
+  .cm-string { color: #98c379; }
+  .cm-string-2 { color: #56b6c2; }
+  .cm-meta { color: #abb2bf; }
+  .cm-builtin { color: #e5c07b; }
+  .cm-tag { color: #e06c75; }
+  .cm-attribute { color: #d19a66; }
+  .cm-qualifier { color: #c678dd; }
+  .cm-error { color: #f44747; background-color: #1e1e1e; }
+  

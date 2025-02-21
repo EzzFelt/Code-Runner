@@ -1,0 +1,119 @@
+/* Corpo da página */
+body {
+  background-color: #1a1a1a; /* Fundo escuro para a página toda */
+  color: white; /* Texto branco */
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+
+/* Container principal para os exercícios */
+.exercises-page {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+h4 {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Listagem das lições */
+.lessons-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espaço entre as lições */
+}
+
+.lesson-card {
+  background-color: #2c2c2c; /* Fundo escuro */
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 1080px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 70px; /* Diminuímos a altura inicial */
+}
+
+/* Quando a lição for expandida */
+.lesson-card.expanded {
+  height: 200px; /* Diminuímos a altura quando expandida */
+}
+
+/* Título da lição com bolinha */
+.lesson-card h5 {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #808080; /* Bolinha cinza */
+  margin-right: 10px;
+}
+
+/* Detalhes da lição */
+.lesson-details {
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lesson-card.expanded .lesson-details {
+  opacity: 1;
+}
+
+/* Dificuldade colorida */
+.difficulty {
+  font-weight: bold;
+}
+
+.difficulty.fácil {
+  color: green;
+}
+
+.difficulty.média {
+  color: yellow;
+}
+
+.difficulty.difícil {
+  color: red;
+}
+
+/* Botão "Começar" */
+.start-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: absolute;
+  bottom: 20px; /* Fixa na parte inferior */
+  right: 20px;  /* Fixa na parte direita */
+  margin-top: 20px; /* Espaço do topo para o botão */
+}
+
+.start-button:hover {
+  background-color: #0056b3;
+}

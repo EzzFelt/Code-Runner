@@ -1,0 +1,108 @@
+/* src/Styles/Login.css */
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Garante que a tela de login ocupe toda a altura da página */
+  background-color: #1a1a1a; /* Cor de fundo escuro */
+}
+
+.login-box {
+  background-color: #1a1a1a; /* Fundo da caixa de login igual ao fundo da tela */
+  border: 1px solid #444; /* Borda clara para contraste */
+  border-radius: 10px; /* Bordas arredondadas */
+  padding: 30px;
+  width: 100%;
+  max-width: 400px; /* Limita a largura da caixa */
+  color: #fff; /* Cor do texto */
+}
+
+.login-box h2 {
+  text-align: center;
+  color: #fff; /* Cor do título */
+  margin-bottom: 20px; /* Espaçamento abaixo do título */
+}
+
+.input-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 15px 10px 15px 10px; /* Ajustando o padding para que a label tenha espaço dentro do input */
+  background-color: transparent; /* Sem fundo */
+  color: #fff; /* Cor do texto dentro dos inputs */
+  font-size: 16px;
+  border: none; /* Sem borda */
+  outline: none; /* Remove a borda padrão do foco */
+  transition: 0.3s ease all; /* Transição suave */
+}
+
+.input-container input:focus {
+  outline: none; /* Remove qualquer contorno ao focar */
+}
+
+/* A label será posicionado dentro do input */
+.input-container label {
+  position: absolute;
+  left: 10px; /* Um pequeno espaçamento à esquerda */
+  top: 50%; /* A label começa no meio do input */
+  transform: translateY(-50%); /* Centraliza a label verticalmente */
+  font-size: 16px;
+  color: #ccc; /* Cor da label inicial */
+  pointer-events: none; /* Impede que a label seja clicada */
+  transition: 0.3s ease all; /* Transição suave para a label */
+}
+
+/* Quando o input estiver focado ou preenchido, a label sobe */
+.input-container input:focus + label,
+.input-container input:not(:placeholder-shown) + label {
+  top: -10px; /* A label sobe */
+  font-size: 12px; /* A label encolhe */
+  color: #6b6c6d; /* A cor da label muda */
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #0056b3; /* Cor do botão */
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #004494; /* Cor do botão ao passar o mouse */
+}
+
+/* Estilos para o rodapé com links */
+.login-footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.links-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
+
+.login-footer a {
+  text-decoration: none;
+  color: #ccc; /* Cor dos links */
+  font-size: 14px;
+}
+
+.login-footer a:hover {
+  color: #fff; /* Cor dos links ao passar o mouse */
+}
+
+.input-container:first-child {
+  margin-top: 50px; /* Margem superior no primeiro input */
+}
