@@ -24,12 +24,12 @@ const ConsultsPage = () => {
           Funções
           <span className="icon">func()</span>
         </div>
-        
+
         <div className="consult-card" onClick={() => openModal('modal-operadores-aritmeticos')}>
           Operadores Aritméticos
           <span className="icon">+ - * / %</span>
         </div>
-        
+
         <div className="consult-card" onClick={() => openModal('modal-operadores-logicos')}>
           Operadores Lógicos
           <span className="icon">&& || !</span>
@@ -51,8 +51,8 @@ const ConsultsPage = () => {
         </div>
 
         <div className="consult-card" onClick={() => openModal('modal-objetos')}>
-              Objetos
-           <span className="icon">&#123;&#125;</span>
+          Objetos
+          <span className="icon">&#123;&#125;</span>
         </div>
       </div>
 
@@ -66,13 +66,13 @@ const ConsultsPage = () => {
                 <p>Funções são blocos de código que você pode criar para realizar tarefas específicas. Elas são muito úteis porque você pode reutilizar o mesmo código em diferentes partes do seu programa sem precisar escrever tudo de novo.</p>
                 <p>Você define uma função com a palavra-chave <code>function</code>, seguida de um nome, e dentro de chaves você coloca o que a função deve fazer.</p>
                 <pre className="code-box">
-{`function minhaFuncao() {
+                  {`function minhaFuncao() {
   console.log("Olá, mundo!");
 }`}
                 </pre>
                 <p>Para usar essa função, você a chama pelo nome:</p>
                 <pre className="code-box">
-{`minhaFuncao();  // Vai imprimir "Olá, mundo!" no console`}
+                  {`minhaFuncao();  // Vai imprimir "Olá, mundo!" no console`}
                 </pre>
               </>
             )}
@@ -90,7 +90,7 @@ const ConsultsPage = () => {
                   <li><strong>%</strong>: Módulo (resto da divisão)</li>
                 </ul>
                 <pre className="code-box">
-{`let soma = 5 + 3;   // soma = 8
+                  {`let soma = 5 + 3;   // soma = 8
 let subtracao = 5 - 3;   // subtracao = 2
 let multiplicacao = 5 * 3;   // multiplicacao = 15
 let divisao = 5 / 3;   // divisao = 1.6667
@@ -109,7 +109,7 @@ let modulo = 5 % 3;   // modulo = 2`}
                   <li><strong>!</strong> (NÃO): Inverte o valor lógico da condição (verdadeiro vira falso, e vice-versa).</li>
                 </ul>
                 <pre className="code-box">
-{`let a = true;
+                  {`let a = true;
 let b = false;
 console.log(a && b); // false
 console.log(a || b); // true
@@ -128,7 +128,7 @@ console.log(!a); // false`}
                   <li><strong>switch</strong>: Verifica várias condições possíveis, facilitando a decisão.</li>
                 </ul>
                 <pre className="code-box">
-{`if (idade >= 18) {
+                  {`if (idade >= 18) {
   console.log("Você é maior de idade");
 } else {
   console.log("Você é menor de idade");
@@ -148,7 +148,7 @@ console.log(!a); // false`}
                   <li><code>var</code>: Mais antigo, mas ainda usado, e tem escopo de função.</li>
                 </ul>
                 <pre className="code-box">
-{`let idade = 25;
+                  {`let idade = 25;
 const nome = "João";
 var cidade = "São Paulo";`}
                 </pre>
@@ -161,7 +161,7 @@ var cidade = "São Paulo";`}
                 <p>Arrays são listas de valores que podem ser de qualquer tipo. Eles são úteis quando você quer armazenar múltiplos valores em uma única variável. No JavaScript, um array é definido com colchetes <code>[]</code>.</p>
                 <p>Os valores dentro de um array são indexados a partir de 0. Ou seja, o primeiro valor está na posição 0, o segundo na posição 1, e assim por diante.</p>
                 <pre className="code-box">
-{`let frutas = ["Maçã", "Banana", "Laranja"];
+                  {`let frutas = ["Maçã", "Banana", "Laranja"];
 console.log(frutas[0]);  // Imprime "Maçã"
 console.log(frutas[1]);  // Imprime "Banana"`}
                 </pre>
@@ -174,7 +174,7 @@ console.log(frutas[1]);  // Imprime "Banana"`}
                 <p>Objetos são estruturas que podem armazenar múltiplos valores, mas ao invés de serem acessados por índice (como nos arrays), os valores são acessados por "chaves".</p>
                 <p>Os objetos são definidos com chaves <code>{`{}`}</code> e podem conter diferentes tipos de dados, incluindo outros objetos ou arrays.</p>
                 <pre className="code-box">
-{`let pessoa = {
+                  {`let pessoa = {
   nome: "Maria",
   idade: 30,
   cidade: "Rio de Janeiro"

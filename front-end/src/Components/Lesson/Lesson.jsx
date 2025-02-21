@@ -10,9 +10,9 @@ const Lesson = ({ objective, tips = [] }) => {
           <h2>Objetivo da Lição</h2>
           <p>{objective}</p>
         </div>
-        
+
         <div className={styles['lesson-divider']} />
-        
+
         <div className={styles['lesson-tips']}>
           <h2>Dicas</h2>
           <ul>
@@ -22,7 +22,7 @@ const Lesson = ({ objective, tips = [] }) => {
           </ul>
         </div>
       </div>
-      
+
       <div className={styles.codeMirrorWrapper}>
         <MyCodeMirror />
       </div>

@@ -14,9 +14,9 @@ export const registerUser = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = await new User({ name, email, password: hashedPassword }).save();
-    
+
     if (!process.env.JWT_SECRET) return res.status(500).json({ msg: 'Chave secreta não definida!' });
-    
+
     res.status(201).json({ msg: 'Usuário registrado!', token: generateToken(newUser._id) });
   } catch (error) {
     res.status(500).json({ msg: 'Erro no servidor.', error: error.message });
@@ -71,10 +71,10 @@ export const validateCode = async (req, res) => {
 
     const normalizeCode = (str) => str.replace(/\s+/g, '').trim();
     const normalizedReceived = normalizeCode(code);
-    
+
     let matchedExerciseId = Object.entries(expectedFunctions)
       .find(([_, expected]) => normalizedReceived === normalizeCode(expected))?.[0];
-    
+
     if (!matchedExerciseId) {
       return res.status(400).json({ message: 'Código incorreto.' });
     }

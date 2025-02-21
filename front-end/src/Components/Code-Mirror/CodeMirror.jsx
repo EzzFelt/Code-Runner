@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import CodeMirror from "codemirror";
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material-darker.css";
-import "./codemirror-custom.css"; 
+import "./codemirror-custom.css";
 import "../../utils/codeMirrorSetup";
 import styles from './styles.module.css';
 import { UserContext } from "../../Contexts/UserContext";
@@ -45,12 +45,12 @@ const MyCodeMirror = () => {
 
   const handleRun = async () => {
     const token = localStorage.getItem("token");
-  
+
     if (!token) {
       setConsoleOutput((prevOutput) => [...prevOutput, "Token não encontrado"]);
       return;
     }
-  
+
     try {
       const response = await fetch("/api/auth/validateCode", {
         method: "POST",
@@ -60,18 +60,18 @@ const MyCodeMirror = () => {
         },
         body: JSON.stringify({ code, testCase: 1 }),
       });
-  
+
       const data = await response.json();
-  
+
       if (response.ok) {
         setConsoleOutput((prevOutput) => [...prevOutput, "Parabéns, seu código passou!"]);
-  
+
         // Update user state with incremented lessonsCompleted
         const updatedUser = {
           ...user,
           lessonsCompleted: (user?.lessonsCompleted || 0) + 1
         };
-        
+
         // Update both localStorage and context
         localStorage.setItem('user', JSON.stringify(updatedUser));
         setUser(updatedUser);
@@ -90,14 +90,14 @@ const MyCodeMirror = () => {
   return (
     <div className={styles.container}>
       <div className={styles.languageButtons}>
-        <button 
-          onClick={() => changeLanguage("javascript")} 
+        <button
+          onClick={() => changeLanguage("javascript")}
           className={selectedLanguage === "JavaScript" ? styles.selected : ""}
         >
           JavaScript
         </button>
-        <button 
-          onClick={() => changeLanguage("python")} 
+        <button
+          onClick={() => changeLanguage("python")}
           className={selectedLanguage === "Python" ? styles.selected : ""}
         >
           Python

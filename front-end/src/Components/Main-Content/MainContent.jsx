@@ -20,7 +20,7 @@ const MainContent = () => {
         </div>
       </div>
 
-      <MyCodeMirror /> 
+      <MyCodeMirror />
     </div>
   );
 };

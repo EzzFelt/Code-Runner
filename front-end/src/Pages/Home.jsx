@@ -4,13 +4,13 @@ import { UserContext } from "../Contexts/UserContext.jsx";
 
 const Home = () => {
   const { user, refetchUser, setUser } = useContext(UserContext);
-  const [isLoading, setIsLoading] = useState(true); 
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const updateUserData = async () => {
-      setIsLoading(true); 
-      await refetchUser(); 
-      setIsLoading(false); 
+      setIsLoading(true);
+      await refetchUser();
+      setIsLoading(false);
     };
 
     updateUserData();

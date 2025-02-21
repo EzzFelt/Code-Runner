@@ -31,7 +31,7 @@ export const UserProvider = ({ children }) => {
         ...userData,
         lessonsCompleted: userData.lessonsCompleted || 0,
       };
-      
+
       localStorage.setItem('user', JSON.stringify(userToStore));
       localStorage.setItem('token', userData.token);
       setUser(userToStore);
@@ -49,11 +49,11 @@ export const UserProvider = ({ children }) => {
 
   const refetchUser = async () => {
     const token = localStorage.getItem("token");
-    
+
     if (!token) {
       return handleLogout();
     }
-    
+
     try {
       const response = await fetch("/api/auth/user", {
         method: "GET",
@@ -61,16 +61,16 @@ export const UserProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      
+
       const data = await response.json();
-      
+
       if (response.ok && data.token) {
         const userData = {
           name: data.name,
           token: data.token,
           lessonsCompleted: data.lessonsCompleted || 0,
         };
-        
+
         localStorage.setItem("user", JSON.stringify(userData));
         setUser(userData);
       }
@@ -80,12 +80,12 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ 
-      user, 
-      setUser, 
-      handleLogin, 
-      handleLogout, 
-      refetchUser 
+    <UserContext.Provider value={{
+      user,
+      setUser,
+      handleLogin,
+      handleLogout,
+      refetchUser
     }}>
       {children}
     </UserContext.Provider>

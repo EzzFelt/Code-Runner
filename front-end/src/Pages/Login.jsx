@@ -4,7 +4,7 @@ import '../Styles/Login.css';
 import { UserContext } from '../Contexts/UserContext';
 
 const Login = () => {
-  const {handleLogin: onLogin} = useContext(UserContext)
+  const { handleLogin: onLogin } = useContext(UserContext)
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -12,12 +12,12 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (!email || !password) {
       setError('Email e senha são obrigatórios.');
       return;
     }
-  
+
     try {
       const response = await fetch('/api/auth/login', {
         method: 'POST',
@@ -26,13 +26,13 @@ const Login = () => {
         },
         body: JSON.stringify({ email, password }),
       });
-  
+
       const data = await response.json();
       console.log('Resposta da API:', data); // Log para verificar a resposta da API
-  
+
       if (response.ok) {
         console.log('Login bem-sucedido', data);
-  
+
         if (data.token) {
           // Agora, apenas verificamos se o token existe
           const userData = {
@@ -40,15 +40,15 @@ const Login = () => {
             token: data.token,
             lessonsCompleted: data.lessonsCompleted
           };
-  
+
           console.log('Usuário para ser salvo:', userData); // Log para verificar o objeto antes de salvar no localStorage
           localStorage.setItem('user', JSON.stringify(userData));
           localStorage.setItem('token', data.token);
           localStorage.setItem('lessonsCompleted', JSON.stringify(userData.lessonsCompleted))
-  
+
           // Atualiza o estado do App
           onLogin(userData);
-  
+
           // Redireciona para a Home
           navigate('/');
         } else {
@@ -62,7 +62,7 @@ const Login = () => {
       console.error(err);
     }
   };
-  
+
 
   return (
     <div className="login-container">
