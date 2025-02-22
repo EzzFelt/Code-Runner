@@ -8,12 +8,18 @@ import styles from './styles.module.css';
 import { UserContext } from "../../Contexts/UserContext";
 
 const MyCodeMirror = () => {
+  // Context to manage user state
   const { user, setUser } = useContext(UserContext);
+  // Ref to store CodeMirror instance
   const editorRef = useRef(null);
+  // State to manage selected language
   const [selectedLanguage, setSelectedLanguage] = useState("JavaScript");
+  // State to manage code content
   const [code, setCode] = useState("");
+  // State to manage console output
   const [consoleOutput, setConsoleOutput] = useState([]);
 
+  // Initialize CodeMirror editor
   useEffect(() => {
     console.log("Inicializando CodeMirror...");
     if (!editorRef.current) {
@@ -29,12 +35,14 @@ const MyCodeMirror = () => {
         }
       );
 
+      // Update code state on editor change
       editorRef.current.on("change", (editor) => {
         setCode(editor.getValue());
       });
     }
   }, []);
 
+  // Function to change the language mode of the editor
   const changeLanguage = (language) => {
     if (editorRef.current) {
       const mode = language === "python" ? "python" : "javascript";
@@ -43,6 +51,7 @@ const MyCodeMirror = () => {
     }
   };
 
+  // Function to handle code execution
   const handleRun = async () => {
     const token = localStorage.getItem("token");
 
@@ -83,6 +92,7 @@ const MyCodeMirror = () => {
     }
   };
 
+  // Function to clear the console output
   const handleClean = () => {
     setConsoleOutput([]);
   };
