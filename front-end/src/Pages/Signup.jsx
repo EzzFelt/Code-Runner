@@ -2,43 +2,45 @@ import React, { useState } from 'react';
 import '../Styles/Login.css';
 
 const Signup = () => {
+  // State variables for form fields and feedback messages
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState(''); // Mensagem de feedback
-  const [loading, setLoading] = useState(false); // Estado de carregamento
+  const [message, setMessage] = useState(''); // Feedback message
+  const [loading, setLoading] = useState(false); // Loading state
 
-
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setMessage(''); // Limpa a mensagem de feedback a cada tentativa
+    setMessage(''); // Clear feedback message on each attempt
 
     try {
+      // Send signup request to the server
       const response = await fetch(`/api/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        credentials: 'include', // Se você estiver usando cookies de sessão, deixe essa linha. Caso contrário, pode remover.
+        credentials: 'include', // Include credentials if using session cookies
         body: JSON.stringify({ name, email, password }),
       });
 
       if (response.ok) {
         const data = await response.json();
-        setMessage('Cadastro realizado com sucesso!');
+        setMessage('Cadastro realizado com sucesso!'); // Success message
         console.log('Cadastro realizado com sucesso:', data);
-        // Limpar os campos do formulário após sucesso
+        // Clear form fields on success
         setName('');
         setEmail('');
         setPassword('');
       } else {
         const errorData = await response.json();
-        setMessage(`Erro no cadastro: ${errorData.message || 'Ocorreu um erro.'}`);
+        setMessage(`Erro no cadastro: ${errorData.message || 'Ocorreu um erro.'}`); // Error message
         console.error('Erro no cadastro:', errorData);
       }
     } catch (error) {
-      // Exibe erro detalhado se disponível
+      // Display detailed error if available
       setMessage(`Erro ao tentar se cadastrar. Verifique sua conexão. Erro: ${error.message || error}`);
       console.error('Erro ao tentar se cadastrar:', error);
     } finally {
@@ -51,7 +53,7 @@ const Signup = () => {
       <div className="login-box">
         <h2>Cadastre-se 🚀</h2>
         <form onSubmit={handleSubmit}>
-          {/* Campo Nome */}
+          {/* Name field */}
           <div className="input-container">
             <input
               type="text"
@@ -63,7 +65,7 @@ const Signup = () => {
             <label htmlFor="name">Nome</label>
           </div>
 
-          {/* Campo Email */}
+          {/* Email field */}
           <div className="input-container">
             <input
               type="email"
@@ -75,7 +77,7 @@ const Signup = () => {
             <label htmlFor="email">Email</label>
           </div>
 
-          {/* Campo Senha */}
+          {/* Password field */}
           <div className="input-container">
             <input
               type="password"
@@ -87,16 +89,16 @@ const Signup = () => {
             <label htmlFor="password">Senha</label>
           </div>
 
-          {/* Botão de Cadastrar */}
+          {/* Submit button */}
           <button type="submit" className="btn" disabled={loading}>
             {loading ? 'Cadastrando...' : 'Cadastrar'}
           </button>
         </form>
 
-        {/* Mensagem de Feedback */}
+        {/* Feedback message */}
         {message && <p className="feedback-message">{message}</p>}
 
-        {/* Links para login */}
+        {/* Link to login page */}
         <div className="login-footer">
           <a href="/login">Já tem uma conta? Faça login</a>
         </div>

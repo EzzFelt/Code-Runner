@@ -4,10 +4,12 @@ import '../Styles/Consults.css';
 const ConsultsPage = () => {
   const [activeModal, setActiveModal] = useState(null);
 
+  // Function to open a modal by setting the activeModal state
   const openModal = (modalId) => {
     setActiveModal(modalId);
   };
 
+  // Function to close the modal when clicking outside the modal content
   const closeModal = (event) => {
     if (event.target.classList.contains('modal')) {
       setActiveModal(null);
@@ -20,6 +22,7 @@ const ConsultsPage = () => {
       <h2>Caso tenha dúvidas, consulte aqui nesta página</h2>
 
       <div className="consults-grid">
+        {/* Cards to open different modals */}
         <div className="consult-card" onClick={() => openModal('modal-funcoes')}>
           Funções
           <span className="icon">func()</span>
@@ -56,10 +59,11 @@ const ConsultsPage = () => {
         </div>
       </div>
 
-      {/* Modais */}
+      {/* Modals */}
       {activeModal && (
         <div className="modal" onClick={closeModal}>
           <div className="modal-content">
+            {/* Modal content for different topics */}
             {activeModal === 'modal-funcoes' && (
               <>
                 <h3>Funções</h3>

@@ -4,21 +4,29 @@ import '../Styles/Login.css';
 import { UserContext } from '../Contexts/UserContext';
 
 const Login = () => {
-  const { handleLogin: onLogin } = useContext(UserContext)
+  // Get the handleLogin function from UserContext
+  const { handleLogin: onLogin } = useContext(UserContext);
+  
+  // State variables for email, password, and error message
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+  
+  // Hook to navigate programmatically
   const navigate = useNavigate();
 
+  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Check if email and password are provided
     if (!email || !password) {
       setError('Email e senha são obrigatórios.');
       return;
     }
 
     try {
+      // Make a POST request to the login API
       const response = await fetch('/api/auth/login', {
         method: 'POST',
         headers: {
@@ -27,29 +35,31 @@ const Login = () => {
         body: JSON.stringify({ email, password }),
       });
 
+      // Parse the response data
       const data = await response.json();
-      console.log('Resposta da API:', data); // Log para verificar a resposta da API
+      console.log('Resposta da API:', data); // Log to check API response
 
       if (response.ok) {
         console.log('Login bem-sucedido', data);
 
         if (data.token) {
-          // Agora, apenas verificamos se o token existe
+          // If token exists, create user data object
           const userData = {
             name: data.name,
             token: data.token,
             lessonsCompleted: data.lessonsCompleted
           };
 
-          console.log('Usuário para ser salvo:', userData); // Log para verificar o objeto antes de salvar no localStorage
+          console.log('Usuário para ser salvo:', userData); // Log to check user data before saving to localStorage
+          // Save user data to localStorage
           localStorage.setItem('user', JSON.stringify(userData));
           localStorage.setItem('token', data.token);
-          localStorage.setItem('lessonsCompleted', JSON.stringify(userData.lessonsCompleted))
+          localStorage.setItem('lessonsCompleted', JSON.stringify(userData.lessonsCompleted));
 
-          // Atualiza o estado do App
+          // Update the App state
           onLogin(userData);
 
-          // Redireciona para a Home
+          // Redirect to Home
           navigate('/');
         } else {
           setError('Token não encontrado.');
@@ -62,7 +72,6 @@ const Login = () => {
       console.error(err);
     }
   };
-
 
   return (
     <div className="login-container">

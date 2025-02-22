@@ -3,23 +3,28 @@ import "../Styles/Home.css";
 import { UserContext } from "../Contexts/UserContext.jsx";
 
 const Home = () => {
-  const { user, refetchUser, setUser } = useContext(UserContext);
+  // Destructure user, refetchUser, and setUser from UserContext
+  const { user, refetchUser} = useContext(UserContext);
+  // State to manage loading status
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Function to update user data
     const updateUserData = async () => {
-      setIsLoading(true);
-      await refetchUser();
-      setIsLoading(false);
+      setIsLoading(true); // Set loading to true before fetching data
+      await refetchUser(); // Fetch user data
+      setIsLoading(false); // Set loading to false after data is fetched
     };
 
-    updateUserData();
-  }, [refetchUser]);
+    updateUserData(); // Call the function to update user data
+  }, [refetchUser]); // Dependency array to call useEffect when refetchUser changes
 
+  // Show loading message while data is being fetched
   if (isLoading) {
-    return <div className="loading">Carregando dados do usuário...</div>; // Mostra um carregamento enquanto os dados estão sendo atualizados
+    return <div className="loading">Carregando dados do usuário...</div>;
   }
 
+  // Show error message if user data is not available
   if (!user) {
     return <div className="error">Erro ao carregar os dados do usuário.</div>;
   }
@@ -28,7 +33,7 @@ const Home = () => {
     <div className="home-container">
       <div className="profile-container">
         <img
-          src={user.profilePicture || "public/imgs/pfp.jpg"} // Foto do usuário ou imagem padrão
+          src={user.profilePicture || "public/imgs/pfp.jpg"} // User's profile picture or default image
           alt="Foto do Usuário"
           className="profile-picture"
         />

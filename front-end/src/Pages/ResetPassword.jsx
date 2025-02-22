@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
 import '../Styles/Login.css';
 
+// Password reset component
 const ResetPassword = () => {
+  // State to store the email
   const [email, setEmail] = useState('');
 
+  // Function to handle password reset
   const handleReset = (e) => {
     e.preventDefault();
-    // Aqui você pode adicionar a lógica para o reset de senha.
-    console.log(`Resetando senha para: ${email}`);
+    // Here you can add the logic for password reset.
+    console.log(`Resetting password for: ${email}`);
   };
 
   return (
     <div className="login-container">
       <div className="login-box">
-        <h2>Esqueceu sua senha? Redefina 🤫</h2>
+        <h2>Forgot your password? Reset it 🤫</h2>
         <form onSubmit={handleReset}>
-          {/* Email */}
+          {/* Input field for email */}
           <div className="input-container">
             <input
               type="email"
@@ -27,13 +30,13 @@ const ResetPassword = () => {
             <label htmlFor="email">Email</label>
           </div>
 
-          {/* Botão de Resetar Senha */}
-          <button type="submit" className="btn">Redefinir Senha</button>
+          {/* Button to reset password */}
+          <button type="submit" className="btn">Reset Password</button>
         </form>
 
-        {/* Links */}
+        {/* Link to go back to login */}
         <div className="login-footer">
-          <a href="/login">Voltar para login</a>
+          <a href="/login">Back to login</a>
         </div>
       </div>
     </div>
