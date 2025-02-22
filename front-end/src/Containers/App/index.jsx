@@ -13,7 +13,7 @@ import Signup from '../../Pages/Signup';
 import ResetPassword from '../../Pages/ResetPassword';
 import { UserProvider } from '../../Contexts/UserContext';
 
-// Layout para páginas que incluem Navbar e SubNavbar
+// Layout for pages that include Navbar and SubNavbar
 const MainLayout = () => (
   <>
     <Navbar />
@@ -27,12 +27,12 @@ const App = () => {
     <UserProvider>
       <Router>
         <Routes>
-          {/* Rotas de Login, Signup e ResetPassword */}
+          {/* Routes for Login, Signup, and ResetPassword */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/reset-password" element={<ResetPassword />} />
 
-          {/* Roteamento principal com Navbar e SubNavbar */}
+          {/* Main routing with Navbar and SubNavbar */}
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/consults" element={<Consults />} />
@@ -44,7 +44,6 @@ const App = () => {
         </Routes>
       </Router>
     </UserProvider>
-
   );
 };
 

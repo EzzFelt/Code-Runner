@@ -1,10 +1,13 @@
 import { createContext, useEffect, useState } from "react";
 
+// Create a context for the user
 export const UserContext = createContext({});
 
+// UserProvider component to provide user context to its children
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
+  // useEffect to initialize user from localStorage and refetch user data
   useEffect(() => {
     const initializeUser = async () => {
       const storedUser = localStorage.getItem('user');
@@ -25,6 +28,7 @@ export const UserProvider = ({ children }) => {
     initializeUser();
   }, []);
 
+  // Function to handle user login
   const handleLogin = (userData) => {
     if (userData && userData.name && userData.token) {
       const userToStore = {
@@ -41,12 +45,14 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  // Function to handle user logout
   const handleLogout = () => {
     setUser(null);
     localStorage.removeItem('token');
     localStorage.removeItem('user');
   };
 
+  // Function to refetch user data from the server
   const refetchUser = async () => {
     const token = localStorage.getItem("token");
 
@@ -79,6 +85,7 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  // Provide user context to children components
   return (
     <UserContext.Provider value={{
       user,
