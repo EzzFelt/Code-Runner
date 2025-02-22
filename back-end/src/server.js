@@ -3,79 +3,79 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
-import authRoutes from './routes/auth.js'; // Importa as rotas de autenticação
-import User from './models/User.js';
-import connectDB from './db.js';
+import authRoutes from './routes/auth.js'; // Import authentication routes
+import User from './models/User.js'; // Import User model
+import connectDB from './db.js'; // Import database connection function
 
-dotenv.config({ path: './src/.env' });
+dotenv.config({ path: './src/.env' }); // Load environment variables from .env file
 
-console.log('JWT_SECRET:', process.env.JWT_SECRET);
+console.log('JWT_SECRET:', process.env.JWT_SECRET); // Log the JWT secret for debugging
 
-const app = express();
+const app = express(); // Create an Express application
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://frontend:5173'], // URLs permitidas para o CORS
+  origin: ['http://localhost:5173', 'http://frontend:5173'], // Allowed URLs for CORS
   credentials: true
 }));
-app.use(bodyParser.json()); // Para lidar com JSON no corpo da requisição
+app.use(bodyParser.json()); // Middleware to handle JSON in request body
 
-// Middleware de autenticação com JWT
+// JWT authentication middleware
 const authenticateToken = (req, res, next) => {
-  const token = req.headers['authorization']?.split(' ')[1]; // Obtém o token do cabeçalho Authorization
+  const token = req.headers['authorization']?.split(' ')[1]; // Get token from Authorization header
 
   if (!token) {
-    console.log('Token não fornecido');
-    return res.status(403).json({ message: 'Token não fornecido' });
+    console.log('Token não fornecido'); // Log if token is not provided
+    return res.status(403).json({ message: 'Token não fornecido' }); // Respond with 403 if no token
   }
 
-  // Verifica o token usando a chave secreta
+  // Verify token using the secret key
   jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
     if (err) {
-      console.log('Token inválido');
-      return res.status(403).json({ message: 'Token inválido' });
+      console.log('Token inválido'); // Log if token is invalid
+      return res.status(403).json({ message: 'Token inválido' }); // Respond with 403 if token is invalid
     }
-    req.user = user;  // Adiciona o usuário decodificado na requisição
-    next();  // Passa para o próximo middleware ou rota
+    req.user = user;  // Add decoded user to request
+    next();  // Pass to the next middleware or route
   });
 };
 
-// Usando as rotas de autenticação importadas de auth.js
-app.use('/api/auth', authRoutes); // Agora todas as rotas do auth.js estarão disponíveis com o prefixo "/api/auth"
+// Use imported authentication routes with prefix "/api/auth"
+app.use('/api/auth', authRoutes);
 
-// Rota protegida (requere autenticação com token) - Você já tinha essa no server.js
+// Protected route (requires token authentication)
 app.get('/api/user', authenticateToken, async (req, res) => {
-  console.log("Requisição recebida para /api/user");
+  console.log("Requisição recebida para /api/user"); // Log request to /api/user
 
   try {
-    const user = await User.findById(req.user.userId); // Garante que está buscando pelo ID correto
+    const user = await User.findById(req.user.userId); // Ensure correct ID is used
     if (!user) {
-      return res.status(404).json({ message: 'Usuário não encontrado' });
+      return res.status(404).json({ message: 'Usuário não encontrado' }); // Respond with 404 if user not found
     }
 
-    // Monta o objeto com os dados do usuário
+    // Construct user data object
     const userData = {
       name: user.name,
       token: req.headers['authorization']?.split(' ')[1],
-      lessonsCompleted: user.lessonsCompleted, // Valor padrão caso esteja ausente
-      profilePicture: user.profilePicture, // Adiciona a foto de perfil
+      lessonsCompleted: user.lessonsCompleted, // Default value if absent
+      profilePicture: user.profilePicture, // Add profile picture
     };
 
-    console.log("Dados do usuário encontrados:", userData);
-    res.json(userData); // Envia os dados do usuário
+    console.log("Dados do usuário encontrados:", userData); // Log found user data
+    res.json(userData); // Send user data
   } catch (error) {
-    console.error('Erro ao buscar dados do usuário:', error.message);
-    res.status(500).json({ message: 'Erro no servidor' });
+    console.error('Erro ao buscar dados do usuário:', error.message); // Log error
+    res.status(500).json({ message: 'Erro no servidor' }); // Respond with 500 if server error
   }
 });
 
-// Conectando ao banco de dados e iniciando o servidor
+// Connect to database and start server
 connectDB().then(() => {
   const port = process.env.PORT || 5000;
   app.listen(port, () => {
-    console.log(`Servidor rodando na porta ${port}`);
+    console.log(`Servidor rodando na porta ${port}`); // Log server running
   });
 }).catch(err => {
-  console.error('Failed to connect to MongoDB', err);
-  process.exit(1);
+  console.error('Failed to connect to MongoDB', err); // Log database connection error
+  process.exit(1); // Exit process if connection fails
 });
