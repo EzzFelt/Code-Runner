@@ -29,7 +29,6 @@ services:
       - coderunner
     volumes:
       - ./front-end/src:/src
-      - ./front-end/node_modules:/src/node_modules
     environment:
       - NODE_ENV=production
       - VITE_API_URL=http://backend:5000
