@@ -36,7 +36,7 @@ Antes de iniciar, certifique-se de ter os seguintes requisitos atendidos:
 Clone o repositório
 
 ```
-git clone git@github.com:<SEU_NOME>/Code-Runner.git
+git clone git@github.com:EzzFelt/Code-Runner.git
 ```
 Substitua <SEU_NOME> pelo seu usuário do GitHub.
 ## Estrutura de pasta
