@@ -28,7 +28,6 @@ Antes de começar, siga os passos abaixo para configurar seu ambiente de desenvo
    ```sh
    git clone git@github.com:EzzFelt/Code-Runner.git
    ```
-   Substitua `<SEU_NOME>` pelo seu usuário do GitHub.
 
 2. **Entre na pasta do projeto**  
    ```sh
