@@ -14,8 +14,10 @@ COPY . .
 # Copiar o script wait-for-it.sh
 COPY wait-for-it.sh /wait-for-it.sh
 
-# Garantir que o script tenha permissão de execução
-RUN chmod +x /wait-for-it.sh
+
+RUN apt-get update && apt-get install -y dos2unix \
+    && dos2unix /wait-for-it.sh \
+    && chmod +x /wait-for-it.sh
 
 # Configuração de ambiente
 ENV PORT=5000
