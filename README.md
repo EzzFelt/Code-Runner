@@ -38,7 +38,7 @@ Clone o repositório
 ```
 git clone git@github.com:EzzFelt/Code-Runner.git
 ```
-Substitua <SEU_NOME> pelo seu usuário do GitHub.
+
 ## Estrutura de pasta
 
 Certifique-se de que a estrutura de pasta do projeto esteja organizada da seguinte forma:
